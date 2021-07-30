@@ -1,0 +1,10 @@
+micronaut:
+  application:
+    name: jdbcDemo
+datasources:
+  default:
+    url: ${JDBC_URL:`jdbc:postgresql://localhost:5432/supermaster`}
+    driverClassName: org.postgresql.Driver
+    username: ${JDBC_USER:elsa}
+    password: ${JDBC_PASSWORD:""}
+    dialect: POSTGRES
