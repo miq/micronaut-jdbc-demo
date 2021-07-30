@@ -3,8 +3,13 @@ micronaut:
     name: jdbcDemo
 datasources:
   default:
-    url: ${JDBC_URL:`jdbc:postgresql://localhost:5432/supermaster`}
-    driverClassName: org.postgresql.Driver
-    username: ${JDBC_USER:elsa}
+    url: ${JDBC_URL:`jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE`}
+    username: ${JDBC_USER:sa}
     password: ${JDBC_PASSWORD:""}
-    dialect: POSTGRES
+    driverClassName: ${JDBC_DRIVER:org.h2.Driver}
+    schema-generate: CREATE_DROP
+flyway:
+  datasources:
+    default:
+      enabled: true
+

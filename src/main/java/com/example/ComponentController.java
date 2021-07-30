@@ -20,13 +20,13 @@ public class ComponentController {
 	@Inject
 	ComponentRepository componentRepository;
 
-	@Get("/{uuid}/icon")
+	@Get("/{uuid}")
 	public HttpResponse<byte[]> icon(@PathVariable String uuid)  {
-		System.out.println("Requested icon for uuid " + uuid);
+		System.out.println("Request for uuid " + uuid);
 		var component = componentRepository.componentById(uuid);
 		if (component.isEmpty()) {
 			return HttpResponse.notFound();
 		}
-		return new SimpleHttpResponseFactory().status(HttpStatus.OK, component.get().getID().getBytes(StandardCharsets.UTF_8)).contentType(MediaType.TEXT_PLAIN);
+		return new SimpleHttpResponseFactory().status(HttpStatus.OK, component.get().getId().getBytes(StandardCharsets.UTF_8)).contentType(MediaType.TEXT_PLAIN);
 	}
 }

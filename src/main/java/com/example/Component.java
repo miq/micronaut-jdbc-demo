@@ -7,13 +7,13 @@ import io.micronaut.data.annotation.MappedEntity;
 public class Component {
 
 	@Id
-	private String ID;
+	private String id;
 
-	public String getID() {
-		return ID;
+	public String getId() {
+		return id;
 	}
 
-	public void setID(String ID) {
-		this.ID = ID;
+	public void setId(String id) {
+		this.id = id;
 	}
 }

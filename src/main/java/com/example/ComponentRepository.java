@@ -8,7 +8,7 @@ import io.micronaut.data.repository.GenericRepository;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
-@JdbcRepository(dialect = Dialect.POSTGRES)
+@JdbcRepository(dialect = Dialect.H2)
 public abstract class ComponentRepository implements GenericRepository<Component, String> {
 
 	private final JdbcOperations jdbcOperations;
@@ -19,7 +19,7 @@ public abstract class ComponentRepository implements GenericRepository<Component
 
 	@Transactional
 	Optional<Component> componentById(String uuid) {
-		String sql = "select * from \"SuperMaster\".component where component.\"ID\" = uuid(?)";
+		String sql = "select * from component where component.id = ?";
 		return jdbcOperations.prepareStatement(sql, statement -> {
 			statement.setString(1, uuid);
 			var resultSet = statement.executeQuery();
